@@ -1,0 +1,14 @@
+@startuml
+
+left to right direction
+
+usecase "Main\nUseCase" as m
+usecase "Sub\nUseCase" as s
+
+actor "Sub Actor" as sa
+actor "Main Actor" as ma
+
+s --|> m
+sa --|> ma
+
+@enduml

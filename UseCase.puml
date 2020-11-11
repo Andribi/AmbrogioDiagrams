@@ -1,0 +1,82 @@
+@startuml
+
+skinparam legendBackgroundColor #ffffff
+'skinparam linetype polyline
+'skinparam linetype ortho
+
+left to right direction
+
+
+
+ legend right
+ =Legenda
+ | <img:LegDoppiaFreccia.png{scale=0.4}> | Interazione con feedback |
+ | <img:LegendaEre.png{scale=0.4}>| Ereditarietà tra Attori o tra Use Case  |
+ endlegend
+
+"Utente Connesso" as uc
+"Utente Non Connesso" as unc
+"Utente" as ut
+
+ uc -u-|> ut
+ unc -l-|> ut
+
+rectangle Ambrogio {
+
+
+
+    package "Connessione\nBluetooth" #DDD {
+
+        usecase Connetti as conn
+        usecase Disconnetti as disconn
+        uc <--> disconn
+        unc <--> conn
+    }
+
+    package Interazioni #DDD {
+
+        package Comandi #999999 {
+            usecase "Gestione\nDispositivi" as gd
+            usecase Accensione as ad
+            usecase Spegnimento as sd
+            usecase "Gestione\nTemperatura" as gt
+            usecase "Alza\nTemperatura" as alza
+            usecase "Abbassa\nTemperatura" as abb
+            usecase "Imposta\nTemperatura" as imp
+            usecase Shutdown as shd
+            usecase Aiuto as aiuto
+        }
+
+
+        package Keyword #999999 {
+            usecase Ambrogio as amb
+
+            ut <-----> amb
+        }
+
+        usecase Errori as err
+
+        err -u----> ut
+
+        Comandi .u.> amb : <<include>>
+
+        ut <--> imp
+        ut <--> abb
+        ut <--> alza
+
+        ut <---> ad
+        ut <---> sd
+        ad --|> gd
+        sd --|> gd
+
+        ut <---> shd
+        ut <-> aiuto
+        alza --|> gt
+        abb --|> gt
+        imp --|> gt
+
+    }
+}
+
+
+@enduml

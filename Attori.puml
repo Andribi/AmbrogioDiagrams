@@ -1,0 +1,10 @@
+@startuml
+
+"Utente Connesso" as uc
+"Utente Non Connesso" as unc
+"Utente" as ut
+
+ uc -u-|> ut
+ unc -u-|> ut
+
+@enduml

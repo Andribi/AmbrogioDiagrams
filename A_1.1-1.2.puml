@@ -1,5 +1,9 @@
 @startuml
-'Requisiti 1.1 e 1.2
+
+'Requisiti
+'1.1.	Prima connessione dell’utente
+'1.2.	Riconoscimento dell’utente nel tempo
+
 skinparam ConditionEndStyle hline
 start
 if (Già connesso) then (si)

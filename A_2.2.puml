@@ -1,24 +1,24 @@
 @startuml
-'Requisito 2.2 Riconoscimento dei comandi
+'Requisito
+'2.2 Riconoscimento dei comandi
+
 skinparam ConditionEndStyle hline
 
 start
-repeat
-:Input verbale;
-if (       L'input è un\ncomando accettato?) then (si)
-    :Esecuzione comando;
-    :Feedback di\n  conferma;
-    repeat while (Il comando richiede\nun'altra interazione?) is (si)
-    backward:Richiesta da parte di Ambrogio;
-    endif
-    break
-endif
+
+repeat :Input verbale;
+  if (L'input è un comando) then (si)
+    :Esecuzione\ncomando;
+  else (no)
+      if (C'è stato un errore?) then (si)
+        #pink:Errore;
+      else (no)
+        :feedback di\nincomprensione;
+        endif
+  endif
+backward:Richiesta di altre\ninfo all'utente;
+repeat while (C'è bisogno di altre info?) is (si) -> Nuova\niterazione
 ->no;
-:  Feedback di\nincomprensione;
-
-
-
-
-
+:Feedback di\n  conferma;
 stop
 @enduml

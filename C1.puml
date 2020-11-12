@@ -1,0 +1,144 @@
+@startuml
+
+skinparam legendBackgroundColor #ffffff
+
+legend top right
+=Legenda
+|= Simbolo campo |= Simbolo metodo |= Ind. visibilità |=  |
+|  <img:http://s.plantuml.com/private-field.png>     |   <img:http://s.plantuml.com/private-method.png>     | private |
+|  <img:http://s.plantuml.com/public-field.png>     |   <img:http://s.plantuml.com/public-method.png>     | public |
+
+endlegend
+
+class EventManager {
+
+    RegexManager rm
+    ContextManager context
+    + Grounding grounding
+    ArduinoToUnity arduino_to_unity
+    - AudioSource[] audios
+    AudioSource s_wakeup
+    SpeechRecognizer recognizer
+    KeywordRecognizer keywordRecognizer
+    Dictionary<string, Action> keywords
+    bool initshutdown
+    CheckTime shutdowntime
+    Queue speech_activation_queue
+    bool isListening
+    bool isPlaying
+    - FuncionTimer temp_timer
+    - double termostato
+    + get_static_temperature
+    - FunctionTimer functionTimer
+    - Checktime checkTime
+    + event OnTvSpentaDa
+    + event OnVentolaSpentaDa
+    + event OnConnection
+    + event OnTimeReach
+    string inputString
+    + event OnNewCommand
+    - string comando
+    + event OnTimeChange
+    - DateTime orario
+    + event OnTemperatureChange
+    - double temperature
+
+    - void Start()
+    - void Update()
+    - void OnEnable()
+    - void OnDisable()
+    void OnGUI()
+    - void setIsPlaying(bool args)
+    - void Prima_interazione(bool args)
+    - void Auto_Spegnimento_ventola()
+    - void Auto_Spegnimento_TV()
+    - void setTemperatura(string args)
+    - void spegniTra(string args)
+    - void KeywordRecognizer_OnPhraseRecognized(PhraseRecognizedEventArgs args)
+    - void startSpeechToText(string context)
+    - void TimerAction()
+    - void ChangeBoolAction()
+    - void TempAction()
+
+}
+
+
+
+class AudioManager {
+
+    AudioSource[] audioSources
+    AudioSource conferma
+    AudioSource incomprensione
+    AudioSource bentornato
+    AudioSource quale
+    AudioSource spegniTv3ore
+    AudioSource spegniVentola3ore
+    AudioSource help
+    AudioSource nonHoCapito
+    AudioSource cancellato
+    AudioSource grounding
+    Queue<int> audio_queue
+    ArrayList arr_audio
+    + int isPlaying
+    + event OnIsPlaying
+    + event OnStartNewIteration
+
+    void Start()
+    void Update()
+    - void OnEnable()
+    - void OnDisable()
+    - void Parlato()
+    - void ComandiVocali(string args)
+    + void DomandaSpegniTv()
+    + void DomandaSpegniVentola()
+    + void GroundingOperation()
+    - void EmptyQueue()
+    - void PlayPriority()
+    + void Enqueue(int el)
+    + void PrintValues(IEnumerable myList)
+
+}
+
+class RegexManager {
+
+    MatchCollection mc
+    Regex pattern_luci_gen
+    Regex pattern_ventilatore
+    Regex pattern_televisione
+    Regex pattern_spegni_tra
+    Regex pattern_temp_gen
+    Regex pattern_temp_spec
+    Regex pattern_arrivederci
+    Regex pattern_help
+    List<Regex> lista_pattern
+    Regex pattern_uno_due_tre
+    Regex pattern_si_no
+    List<Regex> lista_auxiliary_pattern;
+    CommandManager command_manager
+    + string query
+    + string aux_query
+
+    + RegexManager()
+    + void match()
+    + void NewIterationMatch(string context)
+    - string removePunteggiatura(string q)
+}
+
+class ContextManager {
+
+    - List<MyTuple> objectTimesList
+
+    + ContextManager()
+    + void addToObjectTimesList(string oggetto, CheckTime checktime)
+    + string checkTuplesTime()
+}
+
+class CommandManager {
+
+    Queue<string> command_queue
+
+    + void enqueue(string comando)
+
+}
+
+@enduml

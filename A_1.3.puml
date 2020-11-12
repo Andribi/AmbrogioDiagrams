@@ -1,8 +1,9 @@
 @startuml
 'Requisito 1.3
-(*)  --> "Richiesta di disconnessione"
---> "Disconnessione Bluetooth"
---> "Disconnessione dal Sistema Ambrogio"
---> (*)
+start
+:Richiesta di disconnessione;
+:Disconnessione Bluetooth;
+:Disconnessione dal Sistema Ambrogio;
+stop
 
 @enduml

@@ -1,14 +1,14 @@
 @startuml
 'Requisiti 1.1 e 1.2
-'skinparam linetype polyline
-'skinparam linetype ortho
-(*)  --> if "Già connesso" then
-----> [si] "Utente\nriconosciuto" as fine
-else
--r-> [no] "Associazione\nBluetooth"
---> "Connessione\nal sistema\nAmbrogio"
---> "Abilitazione\ndisconnessione"
+skinparam ConditionEndStyle hline
+start
+if (Già connesso) then (si)
+:Utente\nriconosciuto;
+else (no)
+:Associazione\nBluetooth;
+:Connessione\nal sistema\nAmbrogio;
+:Abilitazione\ndisconnessione;
 Endif
--l-> fine
--d->(*)
+:Utente\nriconosciuto;
+stop
 @enduml

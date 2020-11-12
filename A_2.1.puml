@@ -1,0 +1,15 @@
+@startuml
+'Requisito 2.1 Riconoscimento della keyword
+skinparam ConditionEndStyle hline
+
+start
+:Input verbale;
+if (   L'input è \n'Ambrogio'?) then (yes)
+:Feedback di\n  conferma;
+:Sistema in ascolto;
+:Comandi|
+else (no)
+:  Feedback di\nincomprensione;
+Endif
+stop
+@enduml

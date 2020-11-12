@@ -1,5 +1,7 @@
 @startuml
 'Requisito 2.1 Riconoscimento della keyword
+'3.1 e 3.2 Gestione degli input/output
+
 skinparam ConditionEndStyle hline
 
 start

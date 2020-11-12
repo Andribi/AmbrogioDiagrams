@@ -6,7 +6,7 @@
 
 skinparam ConditionEndStyle hline
 start
-if (Già connesso) then (si)
+if (Già connesso) then (sì)
 :Utente\nriconosciuto;
 else (no)
 :Associazione\nBluetooth;

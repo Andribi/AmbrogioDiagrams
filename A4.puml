@@ -7,18 +7,19 @@ skinparam ConditionEndStyle hline
 start
 
 repeat :Input verbale;
-  if (L'input è un comando) then (si)
-    :Esecuzione\ncomando;
+  if (L'input è un comando) then (sì)
+
   else (no)
-      if (C'è stato un errore?) then (si)
+      if (C'è stato un errore?) then (sì)
         #pink:Errore;
       else (no)
         :feedback di\nincomprensione;
         endif
   endif
 backward:Richiesta di altre\ninfo all'utente;
-repeat while (C'è bisogno di altre info?) is (si) -> Nuova\niterazione
+repeat while (C'è bisogno di altre info?) is (sì) -> Nuova\niterazione
 ->no;
+:Esecuzione\ncomando;
 :Feedback di\n  conferma;
 stop
 @enduml

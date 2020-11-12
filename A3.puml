@@ -6,7 +6,7 @@ skinparam ConditionEndStyle hline
 
 start
 :Input verbale;
-if (   L'input è \n'Ambrogio'?) then (si)
+if (   L'input è \n'Ambrogio'?) then (sì)
 :Feedback di\n  conferma;
 :Sistema in ascolto;
 :Comandi|

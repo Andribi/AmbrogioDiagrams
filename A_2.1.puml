@@ -1,15 +1,24 @@
 @startuml
 'Requisito 2.1 Riconoscimento della keyword
+
 skinparam ConditionEndStyle hline
 
 start
-:Input verbale;
-if (   L'input è \n'Ambrogio'?) then (yes)
+
+repeat :Input verbale;
+  if (L'input è un comando) then (si)
+    :Esecuzione\ncomando;
+  else (no)
+      if (C'è stato un errore?) then (si)
+        #pink:Errore;
+      else (no)
+        :feedback di\nincomprensione;
+        endif
+  endif
+backward:Richiesta di altre\ninfo all'utente;
+repeat while (C'è bisogno di altre info?) is (si) -> Nuova\niterazione
+->no;
 :Feedback di\n  conferma;
-:Sistema in ascolto;
-:Comandi|
-else (no)
-:  Feedback di\nincomprensione;
-Endif
 stop
+@enduml
 @enduml

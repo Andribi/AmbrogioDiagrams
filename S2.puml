@@ -1,0 +1,28 @@
+@startuml
+title Connessione Manuale (prima connessione)
+actor Utente as ut
+control "Bluetooth\nSearch" as bs order 50
+activate ut
+ut -> App: Richiesta connessione\nal sistema
+activate App
+App -> bs: Richiesta dispositivi\nBluetooth abbinati
+activate bs
+bs --> App: Dispositivi[0..*]
+deactivate bs
+App --> ut: Dispositivi[0..*]
+ut -> App: Dispositivo\nArduino scelto
+App -> Arduino: Richiesta connessione
+activate Arduino
+alt Connessione eseguita
+    Arduino --> App: ok
+    App --> ut: ''Connesso''
+else Connessione fallita
+    Arduino --> App: fail
+    deactivate Arduino
+    App --> ut: ''Disconnesso''
+    deactivate App
+end
+deactivate ut
+
+
+@enduml

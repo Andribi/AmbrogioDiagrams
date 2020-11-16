@@ -1,0 +1,26 @@
+@startuml
+title Connessione automatica
+Actor Utente as ut
+activate ut
+database TinyDB as tdb order 50
+
+ut -> App: Accesso all'App
+
+activate App
+App -> tdb: Ricerca dispositivo preferito
+activate tdb
+alt Dispositivo esistente
+    tdb --> App: ID Dispositivo
+    App -> Arduino: Richiesta di connessione\na ID Dispositivo
+    activate Arduino
+    Arduino --> App: ok
+    deactivate Arduino
+    App --> ut: ''Connesso''
+else Dispositivo non esistente
+    tdb --> App: Empty
+    deactivate tdb
+    App --> ut: ''Disconnesso''
+    deactivate App
+end
+deactivate ut
+@enduml

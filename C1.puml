@@ -4,7 +4,7 @@ skinparam legendBackgroundColor #ffffff
 
 legend top right
 =Legenda
-|= Simbolo campo |= Simbolo metodo |= Ind. visibilità |=  |
+|= Simbolo campo |= Simbolo metodo |= Ind. visibilità |
 |  <img:http://s.plantuml.com/private-field.png>     |   <img:http://s.plantuml.com/private-method.png>     | private |
 |  <img:http://s.plantuml.com/public-field.png>     |   <img:http://s.plantuml.com/public-method.png>     | public |
 
@@ -113,7 +113,7 @@ class RegexManager {
     List<Regex> lista_pattern
     Regex pattern_uno_due_tre
     Regex pattern_si_no
-    List<Regex> lista_auxiliary_pattern;
+    List<Regex> lista_auxiliary_pattern
     CommandManager command_manager
     + string query
     + string aux_query
@@ -124,6 +124,27 @@ class RegexManager {
     - string removePunteggiatura(string q)
 }
 
+class Grounding {
+
+    + Dictionary<string, int> system_state
+    + Dictionary<string, int> failed_device
+    + event OnFailedDevice
+    Regex pattern_luci
+    Regex pattern_luci_gen
+    Regex pattern_ventilatore
+    Regex pattern_televisione
+    Regex pattern_temp_spec
+    Regex pattern_arrivederci
+    List<Regex> lista_pattern
+
+    + Grounding()
+    - void SetDeviceState(string device, int newState)
+    + void CheckNewCommand(string cmd)
+    + bool CheckIntegrity()
+    - void ResetList()
+    - int AskScriptState(string script)
+}
+
 class ContextManager {
 
     - List<MyTuple> objectTimesList
@@ -131,6 +152,7 @@ class ContextManager {
     + ContextManager()
     + void addToObjectTimesList(string oggetto, CheckTime checktime)
     + string checkTuplesTime()
+
 }
 
 class CommandManager {
@@ -140,5 +162,7 @@ class CommandManager {
     + void enqueue(string comando)
 
 }
+
+
 
 @enduml

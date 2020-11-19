@@ -1,0 +1,27 @@
+@startuml
+skinparam maxMessageSize 200
+skinparam nodesep 50
+skinparam ranksep 50
+rectangle Subscriber1 as s1 #mediumpurple{
+left to right direction
+rectangle "Subscriber: Event += Event_Handler" as sub1 #Gold
+rectangle "Event Handler" as eh1 #Lavender
+}
+
+rectangle Subscriber2 as s2 #mediumpurple{
+left to right direction
+rectangle "Event Handler" as eh2 #Lavender
+rectangle "Subscriber: Event += Event_Handler" as sub2 #Gold
+}
+
+rectangle Publisher as p #DodgerBlue{
+left to right direction
+rectangle "Delegate" as d #LightBlue
+rectangle "Event" as ep #Plum
+}
+sub1 --> p #line:gold;line.bold;text:gold : **Subscribe Event**
+sub2 -l-> p #line:gold;line.bold;text:gold : **Subscribe Event**
+ep -[dashed,thickness=3]-> eh1 #line:plum;text:plum : **Fires Events**
+ep -[dashed,thickness=3]-> eh2 #line:plum;text:plum : **Fires Events**
+eh1 -[dashed,thickness=3]-> d #line:green;text:green : **Event handler signature must match with eventde legate signature**
+@enduml

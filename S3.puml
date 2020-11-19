@@ -1,0 +1,41 @@
+@startuml
+Actor Utente as ut
+participant "Azure" as az  order 3
+ut -> Unity: keyword: "Ambrogio"
+activate ut
+activate Unity
+Unity --> ut: Feedbak di riconoscimento della keyword
+ut -> Unity: Comando vocale
+alt Comando non completo
+    Unity --> ut: Richiesta ulteriori informazioni
+    ut -> Unity: Supplemento
+end
+Unity -> az: Comando vocale (+ supplemento)
+activate az
+
+alt Frase/parola riconosciuta
+    az --> Unity: Stringa comando
+
+    alt Comando interpretabile
+        Unity -> Unity: Esecuzione comando
+        Unity -> Unity: Controllo errori
+        alt Esecuzione avvenuta con errori di sistema
+        Unity --> ut: Feedback vocale "Errore di sistema"
+        end
+        Unity --> ut: Feedback sonoro "Conferma"
+    else Comando non interpretabile
+        Unity --> ut: Feedback sonoro "Non ho capito"
+    end
+else Frase/parola non riconosciuta
+    az --> Unity: Stringa di\nincomprensione
+    Unity --> ut: Feedback vocale "Non ho capito"
+else Fallimento
+    az --> Unity: fail
+    Unity --> ut: Feedback sonoro "Cancellato"
+end
+Unity --> ut: Feedback visivo
+Unity --> ut: Feedback testuale
+deactivate az
+deactivate Unity
+deactivate ut
+@enduml

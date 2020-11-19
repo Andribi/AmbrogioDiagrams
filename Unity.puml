@@ -23,5 +23,5 @@ sub1 --> p #line:gold;line.bold;text:gold : **Subscribe Event**
 sub2 -l-> p #line:gold;line.bold;text:gold : **Subscribe Event**
 ep -[dashed,thickness=3]-> eh1 #line:plum;text:plum : **Fires Events**
 ep -[dashed,thickness=3]-> eh2 #line:plum;text:plum : **Fires Events**
-eh1 -[dashed,thickness=3]-> d #line:green;text:green : **Event handler signature must match with eventde legate signature**
+eh1 -[dashed,thickness=3]-> d #line:green;text:green : **Event handler signature must match with event delegate signature**
 @enduml

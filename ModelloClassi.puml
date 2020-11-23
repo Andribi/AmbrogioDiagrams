@@ -1,0 +1,37 @@
+@startuml
+
+
+class "EventManager" as em
+class "RegexManager" as rm
+class "CommandManager" as cmdm
+class "AudioManager" as am
+
+class "ArduinoToUnity" as atu
+class "Grounding" as g
+class "ContextManager" as cxm
+
+class "CheckTime" as ct
+class "FunctionTimer" as ft
+class "PlayerLook" as pl
+class "PlayerMove" as pm
+
+Package Script{
+class ScriptLuceUno <<(S, orchid) script>>
+class ScriptLuceDue <<(S, orchid) script>>
+class ScriptLuceTre <<(S, orchid) script>>
+class ScriptVentola <<(S, orchid) script>>
+class ScriptEqualizzatore <<(S, orchid) script>>
+class ScriptTv <<(S, orchid) script>>
+class ScriptLightTv <<(S, orchid) script>>
+}
+
+em --> rm
+em --> cxm
+em --> g
+em --> atu
+em --> ct
+em --> ft
+em --> cmdm
+em --> am
+
+@enduml

@@ -1,5 +1,5 @@
 @startuml
-
+Title Modello delle classi\n
 left to right direction
 
 class "EventManager" as em

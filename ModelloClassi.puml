@@ -1,5 +1,6 @@
 @startuml
 
+left to right direction
 
 class "EventManager" as em
 class "RegexManager" as rm
@@ -25,13 +26,16 @@ class ScriptTv <<(S, orchid) script>>
 class ScriptLightTv <<(S, orchid) script>>
 }
 
-em --> rm
-em --> cxm
-em --> g
-em --> atu
-em --> ct
-em --> ft
-em --> cmdm
-em --> am
-
+em ---[thickness=2]> rm
+em --[thickness=2]> cxm
+em --[thickness=2]> g
+em --[thickness=2]> atu
+em --[thickness=2]> ct
+em ---[thickness=2]> ft
+em --[thickness=2]> cmdm
+em --[thickness=2]> am
+atu --[thickness=2]> ft
+cxm --[thickness=2]> ct
+rm --[thickness=2]> cmdm
+am ..[dashed,thickness=3].> Script #line:DodgerBlue;text:DodgerBlue :**Comunica**
 @enduml

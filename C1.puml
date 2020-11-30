@@ -14,7 +14,7 @@ class EventManager {
 
     RegexManager rm
     ContextManager context
-    + Grounding grounding
+    + ErrorDetection errorDetection
     ArduinoToUnity arduino_to_unity
     - AudioSource[] audios
     AudioSource s_wakeup
@@ -124,7 +124,7 @@ class RegexManager {
     - string removePunteggiatura(string q)
 }
 
-class Grounding {
+class ErrorDetection {
 
     + Dictionary<string, int> system_state
     + Dictionary<string, int> failed_device
@@ -137,7 +137,7 @@ class Grounding {
     Regex pattern_arrivederci
     List<Regex> lista_pattern
 
-    + Grounding()
+    + ErrorDetection()
     - void SetDeviceState(string device, int newState)
     + void CheckNewCommand(string cmd)
     + bool CheckIntegrity()

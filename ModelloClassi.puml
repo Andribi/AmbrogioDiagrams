@@ -1,5 +1,7 @@
 @startuml
+
 Title Modello delle classi\n
+
 left to right direction
 
 class "EventManager" as em
@@ -8,22 +10,27 @@ class "CommandManager" as cmdm
 class "AudioManager" as am
 
 class "ArduinoToUnity" as atu
-class "Grounding" as g
+class "ErrorDetection" as g
 class "ContextManager" as cxm
 
 class "CheckTime" as ct
 class "FunctionTimer" as ft
-class "PlayerLook" as pl
-class "PlayerMove" as pm
 
-Package Script{
-class ScriptLuceUno <<(S, orchid) script>>
-class ScriptLuceDue <<(S, orchid) script>>
-class ScriptLuceTre <<(S, orchid) script>>
-class ScriptVentola <<(S, orchid) script>>
-class ScriptEqualizzatore <<(S, orchid) script>>
-class ScriptTv <<(S, orchid) script>>
-class ScriptLightTv <<(S, orchid) script>>
+Package "Movimento" #DDD {
+
+    class "PlayerLook" as pl
+    class "PlayerMove" as pm
+}
+
+Package Script #DDD {
+
+    class ScriptLuceUno <<(S, orchid) script>>
+    class ScriptLuceDue <<(S, orchid) script>>
+    class ScriptLuceTre <<(S, orchid) script>>
+    class ScriptVentola <<(S, orchid) script>>
+    class ScriptEqualizzatore <<(S, orchid) script>>
+    class ScriptTv <<(S, orchid) script>>
+    class ScriptLightTv <<(S, orchid) script>>
 }
 
 em ---[thickness=2]> rm
@@ -38,4 +45,7 @@ atu --[thickness=2]> ft
 cxm --[thickness=2]> ct
 rm --[thickness=2]> cmdm
 am ..[dashed,thickness=3].> Script #line:DodgerBlue;text:DodgerBlue :**Comunica**
+g ..[dashed,thickness=3].> Script #line:DodgerBlue;text:DodgerBlue :**Legge**
+cmdm ..[dashed,thickness=3].> Script #line:DodgerBlue;text:DodgerBlue :**Comunica**
+
 @enduml

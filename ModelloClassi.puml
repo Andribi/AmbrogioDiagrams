@@ -44,7 +44,7 @@ em --[thickness=2]> am
 atu --[thickness=2]> ft
 cxm --[thickness=2]> ct
 rm --[thickness=2]> cmdm
-am ..[dashed,thickness=3].> Script #line:DodgerBlue;text:DodgerBlue :**Comunica**
+am <..[dashed,thickness=3].> Script #line:DodgerBlue;text:DodgerBlue :**Comunica**
 g ..[dashed,thickness=3].> Script #line:DodgerBlue;text:DodgerBlue :**Legge**
 cmdm ..[dashed,thickness=3].> Script #line:DodgerBlue;text:DodgerBlue :**Comunica**
 
